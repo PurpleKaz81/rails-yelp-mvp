@@ -13,7 +13,7 @@ puts 'Generating five restaurants'
   restaurant = Restaurant.new(
     name: Faker::Restaurant.name,
     address: Faker::Address.full_address,
-    category: %w[chinese italian japanese french belgian].sample
+    category: Restaurant::CATEGORY.sample
   )
   restaurant.save!
 
