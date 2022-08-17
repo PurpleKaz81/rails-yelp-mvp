@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Restaurant.destroy_all
+
 puts 'Generating five restaurants'
 5.times do
   restaurant = Restaurant.new(
@@ -14,6 +16,15 @@ puts 'Generating five restaurants'
     category: %w[chinese italian japanese french belgian].sample
   )
   restaurant.save!
+
+  3.times do
+    review = Review.new(
+      restaurant:,
+      rating: rand(0..5),
+      content: Faker::Restaurant.review
+    )
+    review.save!
+  end
 end
 
 puts 'Finished!'
